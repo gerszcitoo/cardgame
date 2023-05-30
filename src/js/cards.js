@@ -207,6 +207,14 @@ let cards = [
     name: "diamond_king",
     value: 13,
   },
+  {
+    name: "joker_black",
+    value: 0,
+  },
+  {
+    name: "joker_red",
+    value: 0,
+  },
 ];
 
 export default cards;
