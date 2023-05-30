@@ -1,3 +1,8 @@
+body {
+  background-image: url("../img/poker-table-texture.jpg");
+  overflow: hidden;
+}
+
 .container {
   perspective: 1000px;
   margin: 50px auto;
@@ -19,14 +24,6 @@
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-}
-
-.front {
-  background-color: #fff;
-  color: #333;
-  text-align: center;
-  font-size: 24px;
-  line-height: 200px;
 }
 
 .back {
