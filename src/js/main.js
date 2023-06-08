@@ -7,6 +7,19 @@ function getCardSuit(cardNumber) {
   return cardSuits[cardNumber];
 }
 
+/* function isCardOnDeck(cardNumber) {
+  if(!deck){
+   const deck = [];
+  }
+  if(deck.includes(cardNumber)){
+   return true;
+  } else {
+   deck.push(cardNumber);
+   return false;
+  }
+  //si deck.length = 52, que reinicie el deck o lo repita en mismo orden
+} */
+
 function flipCardOnClick() {
   //--------flip card on click-----------
   const htmlCard = document.querySelector(".card");
