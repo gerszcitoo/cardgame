@@ -1,4 +1,5 @@
 import cards from "./cards.js";
+let deck = [];
 
 // DESARROLLO:
 // AL HACER CLICK EN LA CARTA FRONTAL, SE HACE LA ANIMACIÓN DE ENVIARLA ATRÁS,
@@ -17,25 +18,32 @@ function getCardSuit(cardNumber) {
   return cardSuits[cardNumber];
 }
 
-/* function isCardOnDeck(cardNumber) {
-  if(!deck){
-   const deck = [];
-  }
-  if(deck.includes(cardNumber)){
-   return true;
+//--------check if card is on deck----------
+function isCardOnDeck(cardNumber) {
+  if (deck.length == 52) {
+    deck = [];
   } else {
-   deck.push(cardNumber);
-   return false;
+    if (deck.includes(cardNumber)) {
+      return true;
+    } else {
+      deck.push(cardNumber);
+      return false;
+    }
   }
   //si deck.length = 52, que reinicie el deck o lo repita en mismo orden
-} */
+}
 
+//--------flip card on click-----------
 function flipCardOnClick() {
-  //--------flip card on click-----------
   const htmlCard = document.querySelector(".card");
 
   //-------generate random card---------
   let randomCardNumber = Math.floor(Math.random() * 52);
+  let isOnDeck = isCardOnDeck(randomCardNumber);
+  do {
+    randomCardNumber = Math.floor(Math.random() * 52);
+    isOnDeck = isCardOnDeck(randomCardNumber);
+  } while (isOnDeck);
 
   // -------insert initial card on html---------
   let cardContent = `<use class="card" href="svg-cards.svg#${cards[randomCardNumber].name}" x="0" y="0" />`;
@@ -47,8 +55,11 @@ function flipCardOnClick() {
 
   htmlCard.addEventListener("click", function () {
     if (htmlCard.classList.contains("flipped")) {
-      //-------generate random card and get its suit---------
-      randomCardNumber = Math.floor(Math.random() * 52);
+      //-------generate random card and simulate deck---------
+      do {
+        randomCardNumber = Math.floor(Math.random() * 52);
+        isOnDeck = isCardOnDeck(randomCardNumber);
+      } while (isOnDeck);
       let cardSuit = getCardSuit(randomCardNumber);
       // -------insert card on html---------
       cardContent = `<use class="card" href="svg-cards.svg#${cards[randomCardNumber].name}" x="0" y="0" />`;
