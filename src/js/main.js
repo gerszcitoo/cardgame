@@ -1,11 +1,7 @@
 import cards from "./cards.js";
 let deck = [];
 
-// DESARROLLO:
-// AL HACER CLICK EN LA CARTA FRONTAL, SE HACE LA ANIMACIÓN DE ENVIARLA ATRÁS,
-// A LA VEZ SE AÑADE UNA CARTA ATRÁS/ADELANTE DE TODO DEL MAZO Y SE MODIFICA LA POSICIÓN DEL MAZO
-// DESPUÉS LA CARTA NUEVA SE LE DA EL FUNCIONAMIENTO DEL BACK DE LA CARTA
-// Y AL CLICKEAR VUELVE AL FUNCIONAMIENTO DE LA CARTA ORIGINAL
+// DEVELOPMENT IDEAS:
 // -----------------------IDEA FRENTE FALSO-----------------------
 // TENER DOS CARTAS, UNA FLIPEABLE Y UNA QUE SÓLO ES EL FRENTE FALSO
 // AL HACER CLICK EN EL FRENTE DE LA CARTA ORIGINAL, HACER LA ANIMACIÓN CON EL FRENTE FALSO,
@@ -31,21 +27,23 @@ function isCardOnDeck(cardNumber) {
       return false;
     }
   }
-  //si deck.length = 52, que reinicie el deck o lo repita en mismo orden
 }
 
-//--------flip card on click-----------
-function flipCardOnClick() {
-  const htmlCard = document.querySelector(".card");
-
-  //-------generate random card---------
+//--------generate random card--------
+function randomCard(){
   let randomCardNumber = Math.floor(Math.random() * 52);
   let isOnDeck = isCardOnDeck(randomCardNumber);
   do {
     randomCardNumber = Math.floor(Math.random() * 52);
     isOnDeck = isCardOnDeck(randomCardNumber);
   } while (isOnDeck);
+  return randomCardNumber;
+}
 
+//--------flip card on click-----------
+function flipCardOnClick() {
+  const htmlCard = document.querySelector(".card");
+  let randomCardNumber = randomCard();
   // -------insert initial card on html---------
   let cardContent = `<use class="card" href="svg-cards.svg#${cards[randomCardNumber].name}" x="0" y="0" />`;
   const cardFront = document.querySelector(".cardSvg");
@@ -56,11 +54,7 @@ function flipCardOnClick() {
 
   htmlCard.addEventListener("click", function () {
     if (htmlCard.classList.contains("flipped")) {
-      //-------generate random card and simulate deck---------
-      do {
-        randomCardNumber = Math.floor(Math.random() * 52);
-        isOnDeck = isCardOnDeck(randomCardNumber);
-      } while (isOnDeck);
+      randomCardNumber = randomCard();
       let cardSuit = getCardSuit(randomCardNumber);
       // -------insert card on html---------
       cardContent = `<use class="card" href="svg-cards.svg#${cards[randomCardNumber].name}" x="0" y="0" />`;
