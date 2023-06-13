@@ -42,7 +42,7 @@ function randomCard(){
 //--------flip card on click-----------
 function flipCardOnClick() {
   const htmlCard = document.querySelector(".card");
-  randomCardNumber = randomCard();
+  let randomCardNumber = randomCard();
   // -------insert initial card on html---------
   let cardContent = `<use class="card" href="svg-cards.svg#${cards[randomCardNumber].name}" x="0" y="0" />`;
   const cardFront = document.querySelector(".cardSvg");
@@ -77,4 +77,4 @@ function flipCardOnClick() {
   });
 }
 
-window.onload = flipCardOnClick();
+window.onload = flipCardOnClick;
