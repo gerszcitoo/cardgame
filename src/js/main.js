@@ -27,6 +27,7 @@ function isCardOnDeck(cardNumber) {
       return true;
     } else {
       deck.push(cardNumber);
+      console.log(deck);
       return false;
     }
   }
@@ -83,4 +84,4 @@ function flipCardOnClick() {
   });
 }
 
-window.onload = flipCardOnClick();
+window.onload = flipCardOnClick;
