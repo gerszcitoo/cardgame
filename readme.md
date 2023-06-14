@@ -18,15 +18,14 @@
 
 ## Acerca del proyecto
 
-Esta aplicación fue desarrollada por Germán Sánchez, inició como un proyecto a desarrollar en mi tiempo libre. La idea final es lograr una aplicación web con la que se pueda jugar al blackjack, poker y demás juegos de cartas sin el uso de librerías externas y con código de JavaScript puro. Con el paso del tiempo iré agregando nuevas funcionalidades en el tiempo que tenga disponible.
+Esta aplicación fue y continúa siendo desarrollada por Germán Sánchez.
+Inició como un proyecto a desarrollar en mi tiempo libre. La idea final es lograr una aplicación web con la que se pueda jugar al blackjack, poker y demás juegos de cartas sin el uso de librerías externas y con código de JavaScript puro. Con el paso del tiempo iré agregando nuevas funcionalidades en el tiempo que tenga disponible.
 
 La aplicación se puede probar aquí [https://gerszcitoo.github.io/cardgame/](https://gerszcitoo.github.io/cardgame/)
 
 ## Herramientas Utilizadas
 
-Este proyecto utiliza
-[SVG CARDS]
-(https://github.com/htdebeer/SVG-cards)
+Este proyecto utiliza [SVG-cards](https://github.com/htdebeer/SVG-cards) para obtener los SVG de cada carta.
 
 ---
 
@@ -34,20 +33,11 @@ Este proyecto utiliza
 
 ## About the project
 
-This app was developed by Germán Sánchez as a final project of the ReactJS course, for the FullStack career at [CoderHouse](https://www.coderhouse.com/).
+This application was and continues to be developed by Germán Sánchez.
+It started as a project to work on in my free time. The ultimate idea is to create a web application where you can play blackjack, poker, and other card games without the use of external libraries, using pure JavaScript code. As time goes on, I will add new features whenever I have the time available.
 
-The task was to make an Ecommerce integrating everything we learned along the course, getting an app that's functional, interactive and dynamic.
-
-The app can be tested here [https://ezbuy-sanchez.netlify.app/](https://ezbuy-sanchez.netlify.app/)
+La aplicación se puede probar aquí [https://gerszcitoo.github.io/cardgame/](https://gerszcitoo.github.io/cardgame/)
 
 ## Tools Used
 
-This project uses the following tools/packages:
-
-- [ReactJS](https://reactjs.org/)
-- [React Router](https://reactrouter.com/en/main)
-- [Material UI](https://mui.com/)
-- [UI Ball](https://uiball.com/loaders/)
-- [Font Awesome](https://fontawesome.com/)
-- [Firebase](https://firebase.google.com/)
-- [Netlify](https://www.netlify.com/)
+This project utilizes [SVG-cards](https://github.com/htdebeer/SVG-cards) to obtain the SVG for each card.
