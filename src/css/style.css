@@ -38,20 +38,11 @@ body {
   position: absolute;
 }
 
-.fakeFrontSvg {
-  position: absolute;
-}
-
 .back {
   transform: rotateY(180deg);
-  /*   animation-name: hideCard;
-  animation-duration: 1s; */
 }
 
-/* .hidingFront {
-}
- */
-@keyframes hideCard {
+/* @keyframes hideCard {
   0% {
     transform: translateX(0px);
   }
@@ -66,15 +57,11 @@ body {
   }
 }
 
-/* .fakeFrontAnimation {
+.slide-to-bottom {
   animation-name: hideCard;
   animation-duration: 1s;
+  opacity: 1;
 } */
-
-.flip {
-  animation-name: hideCard;
-  animation-duration: 1s;
-}
 
 .flipped {
   transform: rotateY(180deg);

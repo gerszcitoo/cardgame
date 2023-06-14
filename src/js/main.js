@@ -1,6 +1,10 @@
 import cards from "./cards.js";
 let deck = [];
 
+const cardFront = document.querySelector(".cardSvg");
+const functionalCard = document.querySelector(".card");
+const startButton = document.querySelector(".play");
+
 // DEVELOPMENT IDEAS:
 // -----------------------IDEA FRENTE FALSO-----------------------
 // TENER DOS CARTAS, UNA FLIPEABLE Y UNA QUE SÓLO ES EL FRENTE FALSO
@@ -14,6 +18,16 @@ function getCardSuit(cardNumber) {
   return cardSuits[cardNumber];
 }
 
+function getCardValue(cardNumber) {
+  //array with every card value
+  const cardValues = cards.map((card) => {
+    const numberPart = card.name.slice(card.name.indexOf("_") + 1);
+    const value = numberPart == "10" ? "10" : numberPart.charAt(0);
+    return value;
+  });
+  return cardValues[cardNumber];
+}
+
 //--------check if card is on deck----------
 function isCardOnDeck(cardNumber) {
   if (deck.length == 52) {
@@ -23,16 +37,15 @@ function isCardOnDeck(cardNumber) {
       return true;
     } else {
       deck.push(cardNumber);
-      console.log(deck);
       return false;
     }
   }
 }
 
 //--------generate random card--------
-function randomCard(){
-  let randomCardNumber = Math.floor(Math.random() * 52);
-  let isOnDeck = isCardOnDeck(randomCardNumber);
+function randomCard() {
+  let randomCardNumber;
+  let isOnDeck;
   do {
     randomCardNumber = Math.floor(Math.random() * 52);
     isOnDeck = isCardOnDeck(randomCardNumber);
@@ -42,40 +55,33 @@ function randomCard(){
 
 //--------flip card on click-----------
 function flipCardOnClick() {
-  const htmlCard = document.querySelector(".card");
   let randomCardNumber = randomCard();
-  // -------insert initial card on html---------
+  let cardValue = getCardValue(randomCardNumber);
+  let cardSuit = getCardSuit(randomCardNumber);
+  console.table(`${cardValue} of ${cardSuit}s`);
   let cardContent = `<use class="card" href="svg-cards.svg#${cards[randomCardNumber].name}" x="0" y="0" />`;
-  const cardFront = document.querySelector(".cardSvg");
-  const fakeFrontSvg = document.querySelector(".fakeFrontSvg");
-
   cardFront.innerHTML = cardContent;
-  fakeFrontSvg.innerHTML = cardContent;
-
-  htmlCard.addEventListener("click", function () {
-    if (htmlCard.classList.contains("flipped")) {
-      randomCardNumber = randomCard();
-      let cardSuit = getCardSuit(randomCardNumber);
-      // -------insert card on html---------
-      cardContent = `<use class="card" href="svg-cards.svg#${cards[randomCardNumber].name}" x="0" y="0" />`;
-      cardFront.innerHTML = cardContent;
-      fakeFrontSvg.innerHTML = cardContent;
-    } else {
-      cardFront.classList.toggle("hidingFront");
-      fakeFrontSvg.classList.toggle("flip");
-      cardFront.style.visibility = "hidden";
-      setTimeout(() => {
-        cardFront.classList.toggle("hidingFront");
-        fakeFrontSvg.classList.toggle("flip");
-        cardFront.style.visibility = "visible";
-      }, 1000);
-    }
-    htmlCard.classList.toggle("flipped");
-    /*     setTimeout(() => {
-      htmlCard.style.visibility = "hidden";
-    }, 800); */
-    // htmlCard.classList.toggle("slide-to-bottom");
-  });
 }
 
+functionalCard.addEventListener("click", function () {
+  if (functionalCard.classList.contains("flipped")) {
+    flipCardOnClick();
+  }
+  // hide card when flip (WIP)
+  /* else {
+    functionalCard.classList.toggle("hidingFront");
+    functionalCard.style.visibility = "hidden";
+    setTimeout(() => {
+      functionalCard.classList.toggle("hidingFront");
+      functionalCard.style.visibility = "visible";
+    }, 800);
+  } */
+  functionalCard.classList.toggle("flipped");
+});
+
+startButton.addEventListener("click", function () {
+  functionalCard.click(); // Simulate the event click on functionalCard
+});
+
+// calls to generate the first card
 window.onload = flipCardOnClick;
